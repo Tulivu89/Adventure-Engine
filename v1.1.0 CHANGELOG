@@ -1,0 +1,75 @@
+# Adventure Engine — Changelog since v1.0
+
+## World-Build Wizard & Staging Pipeline
+- **Generate → stage → review/edit → commit** workflow for every wizard batch
+  (species, factions, locations, characters, bestiary, items). Nothing writes
+  to your world until you commit a draft; batch generators are pure and can
+  be safely re-run.
+- **Context preview** — see the exact, verbatim context a generator will use
+  before spending a generation on it.
+- **Per-draft regenerate** — reroll a single staged draft in place without
+  discarding the rest of the batch.
+- **Chat reprompt** — reroll the wizard's last reply without losing the
+  conversation.
+- **Context budget & distillation** — linked chats are distilled to settled
+  facts (not raw deliberation) and the whole context is trimmed to your
+  account's actual token ceiling, so smaller-context (Scroll-tier) accounts
+  get a working pipeline instead of a silent overflow.
+- **Reliability hardening** — a watchdog now recovers from NAI generations
+  that occasionally wedge and never return, which used to freeze *all* story
+  generation, not just the wizard. A related fix stopped wizard calls from
+  stranding for a full 90-second timeout and coming back empty.
+- **Character staging** — characters are staged as name + concept; full
+  sheet fields are derived at commit time.
+- Workspace Help popups were filled out across every workspace (previously
+  several fell through to "no help yet").
+
+## Locations & World Graph
+- Location generation was consolidated onto one shared entity-creation path
+  used by both the wizard batch generator and the in-play "+ New Location"
+  flow, so a location is always assembled the same way regardless of how
+  it's created.
+- Native HUD entry points for spawning sibling/child locations directly from
+  the map.
+
+## Factions & Resources
+- Faction resources became a proper shared schema (pool / track / discrete)
+  editable per-faction, instead of ad hoc fields.
+- The Holding Document (party/camp/home/company sheet) and Faction Resources
+  moved into their own **Factions Manager** workspace.
+- Faction-resource values moved to persistent, story-scoped storage.
+- A recursive rule-list editor (`apply_to_pool`) lets an effect's own
+  arguments contain another full rule list.
+
+## Holding Document & Player Journal
+- The Holding Document gained a bridge-facing projection so the HUD can
+  render it without engine round-trips, an ordered section list, and
+  stampable notes (mirroring the Journal).
+- Player + author identity edits to the Holding (rename, etc.) from both
+  surfaces.
+
+## Bestiary & Items
+- Reusable NPC and Item template libraries ("Bestiary") feeding the HUD's
+  quick "Add NPC" / "Add Item" popups, with brainstorming in the Wizard and
+  mechanical fields filled in on the template itself.
+
+## Import / Export & World Sharing
+- Smart JSON import now **merges by ID** (upserts) instead of overwriting —
+  re-importing a file updates matching records and adds new ones without
+  clobbering everything else in your story.
+
+## Actions & Resolution
+- Non-dice **player choice** resolution: present an explicit list of
+  labeled options instead of always rolling.
+
+## Interface & Navigation
+- The old four-tab bar was replaced by a landing-page launcher into
+  full-screen workspaces (Roster, Drama, Locations & Entities, Factions
+  Manager, Action Studio), each with its own Navigate header and Help button.
+
+## Bridge / HUD
+- New **Sakura (Cherry Blossom)** theme, joining Witch's
+  Hollow, Runestone, Cyberpunk, and Unicorn Barf, each with theme-specific icon and
+  effect layers (e.g. Sakura's glass/rain/koi-pond treatments).
+- A built-in **Icon Browser** for previewing the full icon set.
+- Sizing and usability fixes to the wizard's in-HUD editing surfaces.
