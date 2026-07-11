@@ -16,7 +16,7 @@ The engine alone is playable through a native fallback toolbar built into NovelA
 own UI. Install the bridge too and you get the full HUD experience: tabs, panels,
 themes, portraits, and generated scene art.
 
-Install the latest bridge HUD script at: https://greasyfork.org/en/scripts/582085-adventure-engine-bridge-hud-v1-0-0
+Install the latest bridge HUD script at: [https://greasyfork.org/en/scripts/582085-adventure-engine-bridge-hud-v1-0-0](https://greasyfork.org/en/scripts/582085-adventure-engine-bridge-hud-v1-1-0)
 - Requires a tampermonkey or violentmonkey.github.io browser extension.
 
 ---
