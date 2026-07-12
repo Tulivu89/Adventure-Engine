@@ -1,0 +1,1 @@
+The Adventure Engine has a particular style of llm interaction so a system prompt customized to fit your adventure is recommended. Since I only tested with Xailong, I used Alexei's Text Adventure prompt as the basis for these examples.
